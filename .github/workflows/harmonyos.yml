@@ -1,9 +1,13 @@
 name: harmonyos
 # on: pull_request
+# on:
+#   push:
+#     tags:
+#       - '*'
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - master
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_15.2.app/Contents/Developer
