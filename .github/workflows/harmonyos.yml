@@ -270,7 +270,8 @@ jobs:
         wget https://repo.huaweicloud.com/harmonyos/os/4.0-Release/ohos-sdk-windows_linux-public.tar.gz
         tar -xf ohos-sdk-windows_linux-public.tar.gz
         cd ohos-sdk/linux
-        unzip -q native-linux-x64-4.1.7.8-Release.zip
+         unzip -q native-linux-x64-4.0.10.13-Release.zip
+        # unzip -q native-linux-x64-4.1.7.8-Release.zip
     - uses: actions/download-artifact@v4
       with:
         name: opencv-mobile-${{ matrix.opencv-version }}-source
