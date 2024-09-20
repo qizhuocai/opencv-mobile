@@ -31,12 +31,13 @@ jobs:
       run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
     - name: opencv4-source
       env:
-        opencv-version: 4.8.1
+        opencv-version2: 4.8.1 
+        opencv-version: 4.10.0
       run: |
-        wget -q https://github.com/opencv/opencv/archive/${{ env.opencv-version }}.zip -O opencv-${{ env.opencv-version }}.zip
-        unzip -q opencv-${{ env.opencv-version }}.zip
-        rm opencv-${{ env.opencv-version }}.zip
-        cd opencv-${{ env.opencv-version }}
+        wget -q https://github.com/opencv/opencv/archive/${{ env.opencv-version2 }}.zip -O opencv-${{ env.opencv-version2 }}.zip
+        unzip -q opencv-${{ env.opencv-version2 }}.zip
+        rm opencv-${{ env.opencv-version2 }}.zip
+        cd opencv-${{ env.opencv-version2 }}
         truncate -s 0 cmake/OpenCVFindLibsGrfmt.cmake
         rm -rf modules/gapi
 
