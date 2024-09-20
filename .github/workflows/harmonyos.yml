@@ -88,7 +88,8 @@ jobs:
         zip -9 -r opencv-mobile-${{ env.opencv-version }}.zip opencv-mobile-${{ env.opencv-version }}
     - name: opencv3-source
       env:
-        opencv-version: 3.4.20
+           opencv-version: 4.8.1
+        # opencv-version: 3.4.20
       run: |
         wget -q https://github.com/opencv/opencv/archive/${{ env.opencv-version }}.zip -O opencv-${{ env.opencv-version }}.zip
         unzip -q opencv-${{ env.opencv-version }}.zip
@@ -165,8 +166,8 @@ jobs:
         zip -9 -r opencv-mobile-${{ env.opencv-version }}.zip opencv-mobile-${{ env.opencv-version }}
     - name: opencv4-source
       env:
-       opencv-version: 4.8.1
-        # opencv-version: 4.10.0
+      
+        opencv-version: 4.10.0
       run: |
         wget -q https://github.com/opencv/opencv/archive/${{ env.opencv-version }}.zip -O opencv-${{ env.opencv-version }}.zip
         unzip -q opencv-${{ env.opencv-version }}.zip
@@ -244,15 +245,16 @@ jobs:
     - name: upload-opencv3-source
       uses: actions/upload-artifact@v4
       with:
-        name: opencv-mobile-3.4.20-source
-        path: opencv-mobile-3.4.20.zip
+        name: opencv-mobile-4.8.1-source
+        path: opencv-mobile-4.8.1.zip
+        # name: opencv-mobile-3.4.20-source
+        # path: opencv-mobile-3.4.20.zip
     - name: upload-opencv4-source
       uses: actions/upload-artifact@v4
       with:
-        name: opencv-mobile-4.8.1-source
-        path: opencv-mobile-4.8.1.zip
-        # name: opencv-mobile-4.10.0-source
-        # path: opencv-mobile-4.10.0.zip
+       
+        name: opencv-mobile-4.10.0-source
+        path: opencv-mobile-4.10.0.zip
 
 
   harmonyos:
@@ -260,8 +262,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-       opencv-version: [2.4.13.7, 3.4.20, 4.8.1]
-        # opencv-version: [2.4.13.7, 3.4.20, 4.10.0]
+       # opencv-version: [2.4.13.7, 3.4.20, 4.8.1]
+         opencv-version: [2.4.13.7, 3.8.1, 4.10.0]
     env:
       OHOS_NDK_CMAKE: $GITHUB_WORKSPACE/ohos-sdk/linux/native/build-tools/cmake/bin/cmake
       COMMON_CMAKE_OPTIONS: |
@@ -320,11 +322,11 @@ jobs:
         cp -rf ${{ env.SOURCE_DIR }}/build-arm64-v8a/install/* ${{ env.PACKAGE_NAME }}/arm64-v8a/
         zip -9 -r ${{ env.PACKAGE_NAME }}.zip ${{ env.PACKAGE_NAME }}
     - name: set-opencv-dir
-      if: matrix.opencv-version == '2.4.13.7' || matrix.opencv-version == '3.4.20'
+      if: matrix.opencv-version == '2.4.13.7' || matrix.opencv-version == '4.8.1'
       run: echo "OPENCV_SUBDIR=share/OpenCV" >> $GITHUB_ENV
     - name: set-opencv-dir
-      if: matrix.opencv-version == '4.8.1'
-      # if: matrix.opencv-version == '4.10.0'
+     
+      if: matrix.opencv-version == '4.10.0'
       run: echo "OPENCV_SUBDIR=lib/cmake/opencv4" >> $GITHUB_ENV
     - name: test-armeabi-v7a
       run: |
