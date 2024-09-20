@@ -109,7 +109,7 @@ jobs:
 
         rm modules/core/include/opencv2/core/cuda*.hpp
         rm modules/core/include/opencv2/core/directx.hpp
-        rm modules/core/include/opencv2/core/ippasync.hpp
+        # rm modules/core/include/opencv2/core/ippasync.hpp
         rm modules/core/include/opencv2/core/ocl*.hpp
         rm modules/core/include/opencv2/core/opengl.hpp
         rm modules/core/include/opencv2/core/ovx.hpp
