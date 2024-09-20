@@ -166,7 +166,7 @@ jobs:
         zip -9 -r opencv-mobile-${{ env.opencv-version }}.zip opencv-mobile-${{ env.opencv-version }}
     - name: opencv4-source
       env:
-      
+
         opencv-version: 4.8.1
       run: |
         wget -q https://github.com/opencv/opencv/archive/${{ env.opencv-version }}.zip -O opencv-${{ env.opencv-version }}.zip
@@ -262,7 +262,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-      opencv-version: [2.4.13.7, 3.4.20, 4.8.1]
+    
+       opencv-version: [2.4.13.7, 3.4.20, 4.8.1]
        #  opencv-version: [2.4.13.7, 3.8.1, 4.10.0]
     env:
       OHOS_NDK_CMAKE: $GITHUB_WORKSPACE/ohos-sdk/linux/native/build-tools/cmake/bin/cmake
